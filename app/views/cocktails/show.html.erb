@@ -1,0 +1,11 @@
+<h1><%= @cocktail.name%></h1>
+<p>ingredients :</p>
+<% @dose = Dose.where(cocktail_id: @cocktail.id)%>
+<% @dose.each do |dose|%>
+<%= dose.description%>
+<% ingredient = Ingredient.find(dose.ingredient_id)%>
+<%= ingredient.name %>
+<br>
+<% end%>
+
+<%= link_to "Add Doses", new_cocktail_dose_path(@cocktail), class: "btn btn-primary"%>

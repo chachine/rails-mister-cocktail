@@ -1,12 +1,18 @@
-<h1><%= @cocktail.name%></h1>
-<p>ingredients :</p>
-<% @dose = Dose.where(cocktail_id: @cocktail.id)%>
-<% @dose.each do |dose|%>
-<%= dose.description%>
-<% ingredient = Ingredient.find(dose.ingredient_id)%>
-<%= ingredient.name %>
-<%=link_to "Delete", cocktail_dose_path(@cocktail), method: :delete, class: "btn-small" %>
-<br>
-<% end%>
-
+<div class="container">
+  <h1 class="text-center"><%= @cocktail.name%></h1>
+  <p>ingredients :</p>
+  <div class="row">
+   <div class="col-xm-12 col-md-12 col-lg-12">
+    <% @dose = Dose.where(cocktail_id: @cocktail.id)%>
+    <% @dose.each do |dose|%>
+    <%= dose.description%>
+    <% ingredient = Ingredient.find(dose.ingredient_id)%>
+    <%= ingredient.name %>
+    <%=link_to "Delete", cocktail_dose_path(@cocktail), method: :delete, class: "btn-small" %>
+    <br>
+    <% end%>
+  </div>
+</div>
 <%= link_to "Add Doses", new_cocktail_dose_path(@cocktail), class: "btn btn-primary"%>
+</div>
+

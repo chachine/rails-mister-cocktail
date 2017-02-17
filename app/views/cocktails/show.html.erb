@@ -11,11 +11,17 @@
     <%= dose.description%>
     <% ingredient = Ingredient.find(dose.ingredient_id)%>
     <%= ingredient.name %>
-    <%=link_to "Delete", cocktail_dose_path(@cocktail), method: :delete, class: "btn-small" %>
+    <%=link_to "Delete", dose_path(@cocktail), method: :delete, class: "btn-small" %>
     <br>
     <% end%>
   </div>
 </div>
 <%= link_to "Add Doses", new_cocktail_dose_path(@cocktail), class: "btn btn-primary"%>
+<br>
+<%= link_to "Update", edit_cocktail_path(@cocktail) %>
+<br>
+<%= link_to "Delete", cocktail_url(@cocktail),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
 </div>
 

@@ -17,6 +17,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :card do
-    cloudinary_transformation width: 250, height: 200, gravity: :center
+    cloudinary_transformation width: 250, height: 100, gravity: :face
   end
 end

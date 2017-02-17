@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h1 class="text-center"><%= @cocktail.name%></h1>
   <%= cl_image_tag @cocktail.photo.url(:standard) %>
   <br>
@@ -23,5 +23,41 @@
 <%= link_to "Delete", cocktail_url(@cocktail),
       method: :delete,
       data: { confirm: "Are you sure?" } %>
-</div>
+</div> -->
 
+<div class="media">
+  <div class="media-body">
+    <div class="media-section">
+      <h2><%= @cocktail.name%></h2>
+       <%= cl_image_tag @cocktail.photo.url(:standard) %>
+    </div>
+    <div class="media-section">
+      <h2>Description</h2>
+      ...
+      <br>
+      <%= link_to "Update", edit_cocktail_path(@cocktail), class: "btn btn-primary" %>
+
+<%= link_to "Delete", cocktail_url(@cocktail),
+      method: :delete,
+      data: { confirm: "Are you sure?" },
+       class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="media-aside">
+    <div class="media-section">
+      <h2>Ingredients</h2>
+       <% @dose = Dose.where(cocktail_id: @cocktail.id)%>
+
+    <% @dose.each do |dose|%>
+    <%= dose.description%>
+    <% ingredient = Ingredient.find(dose.ingredient_id)%>
+    <%= ingredient.name %>
+    <%=link_to "Delete", dose_path(@cocktail), method: :delete, class: "btn-small" %>
+    <br>
+    <% end%>
+    </div>
+    <div class="media-section">
+      <%= link_to "Add Doses", new_cocktail_dose_path(@cocktail), class: "btn btn-primary"%>
+    </div>
+  </div>
+</div>

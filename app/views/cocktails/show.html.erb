@@ -1,9 +1,12 @@
 <div class="container">
   <h1 class="text-center"><%= @cocktail.name%></h1>
+  <%= cl_image_tag @cocktail.photo.url(:standard) %>
+  <br>
   <p>ingredients :</p>
   <div class="row">
    <div class="col-xm-12 col-md-12 col-lg-12">
     <% @dose = Dose.where(cocktail_id: @cocktail.id)%>
+
     <% @dose.each do |dose|%>
     <%= dose.description%>
     <% ingredient = Ingredient.find(dose.ingredient_id)%>

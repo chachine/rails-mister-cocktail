@@ -1,19 +1,18 @@
+
 <div class="container">
-  <h1 class="text-center">All cocktails</h1>
-  <% @cocktails.each do |cocktail| %>
   <div class="row">
-   <div class="col-xm-12 col-md-12 col-lg-12">
-     <ul class="list-group ">
-      <li class="list-group-item text-center">
 
-        <h2><%= cocktail.name %></h2>
+<% @cocktails.each do |cocktail| %>
+<div class="col-xs-12 col-sm-6">
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cocktail.photo.url(:card) %>);">
 
-            <a href = <%= cocktail_path(cocktail)%> ><%= image_tag cocktail.image%></a>
-
-      </li>
-    </ul>
+  <div class="card-description">
+    <h2><%= cocktail.name %></h2>
 
   </div>
+  <a class="card-link" href= <%= cocktail_path(cocktail)%> ></a>
 </div>
+ </div>
  <% end %>
+</div>
 </div>

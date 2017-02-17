@@ -6,7 +6,8 @@
    <div class="col-xm-12 col-md-12 col-lg-12">
 <%= simple_form_for @cocktail do |f| %>
   <%= f.input :name %>
-  <%= f.input :image %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
   <%= f.button :submit %>
 <% end %>
     </div>
